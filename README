@@ -1,0 +1,5 @@
+pdf417 lib, python bindings and CLI.
+
+Result of cleaning up the tarbal from https://sourceforge.net/projects/pdf417encode which drove me to "and screw that CLI, do it in Python instead." (Thanks Maney.)
+
+
