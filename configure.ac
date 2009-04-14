@@ -1,0 +1,11 @@
+AC_INIT(pdf417_enc.c)
+
+AM_INIT_AUTOMAKE(pdf417lib,5.1)
+
+AC_PROG_CC
+
+AC_PROG_CXX
+
+AC_PROG_INSTALL
+
+AC_OUTPUT(Makefile)
