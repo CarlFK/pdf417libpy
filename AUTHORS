@@ -1,0 +1,9 @@
+/* This work is based somewhat on the pdf417_enc code written by */
+/*              Ian Goldberg at UC-Berkeley */
+/*                                        */
+/* Authors: John Lien (jtlien@charter.net) */
+/*          Laszlo Agoston   lagaston@bmw.co.at */
+/*          Tom Tollenaere  t2@pophost.eunet.be (gif output routines )  */
+/*     Useful examples provided by "Tom Tollenaere" t2@pophost.eunet.be  
+
+Cleaned up and repackaged by Carl Karsten carl@personnelware.com April 10, 2009

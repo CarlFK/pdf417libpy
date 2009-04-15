@@ -1,3 +1,6 @@
+#ifndef SYS_PDF417_H
+#define SYS_PDF417_H 1
+
 #define OUTPUT_GIF  1
 #define OUTPUT_PBM  2
 #define OUTPUT_PS   3
@@ -18,3 +21,6 @@ extern void pdf417_en_new (int in_rval, int in_cval, int in_ec_level,
                        int output_type, int use_default, int raw_in_mode,
                        int X, int Y, int QZ );
 //extern void pdf417_prep_to_raw(const char* buffer, int buffer_len);
+
+#endif /* !SYS_PDF417_H */
+

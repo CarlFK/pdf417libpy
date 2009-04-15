@@ -179,7 +179,7 @@ License for more details.  */
 
 
 #include <ctype.h>
-#include "globs.h"
+/* #include "globs.h" */
 #include "bits.h"
 #include "pdf417.h"
 
@@ -1494,7 +1494,6 @@ eras_dec_rs (int data[NN], int eras_pos[NN - KK], int no_eras, int data_len,
 
   debug = 0;
 
-  //if(!RS_init)
   init_rs ();
 #define DEBUG 2
 
@@ -1526,7 +1525,6 @@ eras_dec_rs (int data[NN], int eras_pos[NN - KK], int no_eras, int data_len,
         continue;
       tmp = Index_of[data[data_len - j]];
 
-      /*  s[i] ^= Alpha_to[modbase(tmp + (1+i-1)*j)]; */
       for (i = 1; i <= synd_len; i++)
         {
           s[i] = (s[i] + Alpha_to[modbase (tmp + (i) * j)]) % GPRIME;
@@ -1576,7 +1574,6 @@ eras_dec_rs (int data[NN], int eras_pos[NN - KK], int no_eras, int data_len,
       printf ("No errors \n");
       goto finish;
     }
-  // CLEAR(&lambda[1],synd_len);
 
   for (ci = synd_len - 1; ci >= 0; ci--)
     lambda[ci + 1] = 0;
@@ -1720,8 +1717,6 @@ eras_dec_rs (int data[NN], int eras_pos[NN - KK], int no_eras, int data_len,
               if (b[i] != A0)
                 {
 
-                  //  t[i+1] =  (lambda[i+1] + GPRIME -
-                  //              Alpha_to[modbase(discr_r + GPRIME - 1 -  b[i])]) % GPRIME;
                   t[i + 1] = (lambda[i + 1] +
                               Alpha_to[modbase (discr_r + b[i])]) % GPRIME;
 
@@ -2002,7 +1997,6 @@ eras_dec_rs (int data[NN], int eras_pos[NN - KK], int no_eras, int data_len,
         {
           if (omega[i] != A0)
             {
-              //    num1  = ( num1 + Alpha_to[modbase(omega[i] + (i * root[j])]) % GPRIME;
               num1 =
                 (num1 +
                  Alpha_to[modbase (omega[i] + ((i + 1) * root[j]))]) % GPRIME;
@@ -2013,7 +2007,6 @@ eras_dec_rs (int data[NN], int eras_pos[NN - KK], int no_eras, int data_len,
                 }
             }
         }
-      //  num2 = Alpha_to[modbase(root[j] * (1 - 1) + data_len)];
 
       num2 = 1;
       den = 0;
@@ -3101,8 +3094,6 @@ PDF417_encodeGIF (char *gfname, Int32 datacols, Int32 datarows,
       printf ("About to do free \n");
     }
 
-  // free((char *) ScanLine);
-
   if (debug)
     {
       printf ("Done with free \n");
@@ -3243,25 +3234,6 @@ make_pdf_ps_dim (char *output_filename, Int32 ** out, int justbits, int outtype,
   /* Each row has start, left, data, right, stop */
 
   // top quiet zone
-#if 0
-  for (ii = 0; ii < 2; ii += 1)
-    {
-      tnum = ((cnt_17 + 6) / 4) + 2;
-      if (debug)
-        {
-          printf ("tnum = %d \n", tnum);
-        }
-      if ((tnum % 2) != 0)
-        {
-          tnum += 1;
-        }
-      for (mm = 0; mm < tnum; mm += 1)
-        {
-          fprintf (outfile1, "F");
-        }
-      fprintf (outfile1, "\n");
-    }
-#endif
   for (ii = 0; ii < number_of_rows; ii += 1)
     {
 
@@ -3325,25 +3297,7 @@ make_pdf_ps_dim (char *output_filename, Int32 ** out, int justbits, int outtype,
 
       cnt_17 = (number_of_columns + 2) * 17;
       bits[cnt_17] = FALSE;		// last (18th) stop bit
-#if 0
-      for (mm = cnt_17 + 1; mm < cnt_17 + 20; mm += 1)
-        {
-          bits[mm] = TRUE;
-        }
-      for (mm = cnt_17 + 20; mm < cnt_17 + 30; mm += 1)
-        {
-          bits[mm] = FALSE;
-        }
-      tnum = ((cnt_17 + 6) / 4) + 2;
-      if (debug)
-        {
-          printf ("tnum = %d \n", tnum);
-        }
-      if ((tnum % 2) != 0)
-        {
-          tnum += 1;
-        }
-#endif
+
 tnum = (cnt_17 + 1 + 7) / 8;
 tnum <<= 1;
 for (mm = cnt_17 + 1; mm < tnum * 4; mm++)
@@ -3396,25 +3350,6 @@ for (mm = cnt_17 + 1; mm < tnum * 4; mm++)
 
 
   // bottom quiet zone
-#if 0
-  for (ii = 0; ii < 2; ii += 1)
-    {
-      tnum = ((cnt_17 + 6) / 4) + 2;
-      if (debug)
-        {
-          printf ("tnum = %d \n", tnum);
-        }
-      if ((tnum % 2) != 0)
-        {
-          tnum += 1;
-        }
-      for (mm = 0; mm < tnum; mm += 1)
-        {
-          fprintf (outfile1, "F");
-        }
-      fprintf (outfile1, "\n");
-    }
-#endif
 
 #ifdef SHORT_PS
 
@@ -5918,13 +5853,6 @@ pdf417_en_new(int in_rval, int in_cval, int in_ec_level, int output_type,
             }
         }
 
-      /*{
-         printf ("  == codewords:\n");
-         for (fill_count = 0; fill_count < datalen; fill_count++)
-         printf (" %03d", codes[fill_count]);
-         printf ("\n  == done\n");
-         } */
-
 
       if (debug)
         {
@@ -6201,14 +6129,6 @@ pdf417_en (int in_rval, int in_cval, int in_ec_level, int output_type,
               data[i] = 900;    /* padding */
             }
         }
-
-      /*{
-         printf ("  == codewords:\n");
-         for (fill_count = 0; fill_count < datalen; fill_count++)
-         printf (" %03d", codes[fill_count]);
-         printf ("\n  == done\n");
-         } */
-
 
       if (debug)
         {

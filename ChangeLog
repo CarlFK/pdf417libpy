@@ -1,0 +1,14 @@
+NOTE that this ChangeLog is not detailed.  It is an overview of what happned.
+
+Sun Apr 12 08:00:00  2009
+(carl)
+
+Reviewed the code at https://sourceforge.net/projects/pdf417encode/
+Seemes all of the funtionality for creating a barcode from text is in 
+pdf417_enc.c  (There is some code to decode an image back into text 
+in pdf417_dec, that can be dealt with later.)
+
+Converted everything to autoconf/automake/libtool etc, with the intent to packge for debian.
+
+-------------------------------------------------------------------------------
+

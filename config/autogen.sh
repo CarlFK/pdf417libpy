@@ -4,5 +4,5 @@ set -xe
 
 aclocal
 autoconf
-automake
+automake --add-missing
 ./configure
