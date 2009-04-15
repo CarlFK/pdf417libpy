@@ -1,1 +1,9 @@
-/usr/share/automake-1.10/INSTALL
+INSTALL.txt
+
+Building:
+if you are working from trunk:
+./config/autogen.sh
+make
+
+Then wait for me to get this packaged.
+
