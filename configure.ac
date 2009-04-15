@@ -6,5 +6,8 @@ AC_PROG_LIBTOOL
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
-AC_OUTPUT(Makefile)
-AC_OUTPUT
+AC_OUTPUT([
+lib/Makefile
+Makefile
+])
+
